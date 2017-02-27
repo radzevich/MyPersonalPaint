@@ -1,0 +1,14 @@
+E:\Универ\2 course\ООП\MyPersonalPaint1\PaintWPF\PaintWPF\PaintWPF\bin\Debug\PaintWPF.exe.config
+E:\Универ\2 course\ООП\MyPersonalPaint1\PaintWPF\PaintWPF\PaintWPF\bin\Debug\PaintWPF.exe
+E:\Универ\2 course\ООП\MyPersonalPaint1\PaintWPF\PaintWPF\PaintWPF\bin\Debug\PaintWPF.pdb
+E:\Универ\2 course\ООП\MyPersonalPaint1\PaintWPF\PaintWPF\PaintWPF\obj\Debug\PaintWPF.csprojResolveAssemblyReference.cache
+E:\Универ\2 course\ООП\MyPersonalPaint1\PaintWPF\PaintWPF\PaintWPF\obj\Debug\MainWindow.g.cs
+E:\Универ\2 course\ООП\MyPersonalPaint1\PaintWPF\PaintWPF\PaintWPF\obj\Debug\App.g.cs
+E:\Универ\2 course\ООП\MyPersonalPaint1\PaintWPF\PaintWPF\PaintWPF\obj\Debug\PaintWPF_MarkupCompile.cache
+E:\Универ\2 course\ООП\MyPersonalPaint1\PaintWPF\PaintWPF\PaintWPF\obj\Debug\PaintWPF_MarkupCompile.lref
+E:\Универ\2 course\ООП\MyPersonalPaint1\PaintWPF\PaintWPF\PaintWPF\obj\Debug\MainWindow.baml
+E:\Универ\2 course\ООП\MyPersonalPaint1\PaintWPF\PaintWPF\PaintWPF\obj\Debug\PaintWPF.g.resources
+E:\Универ\2 course\ООП\MyPersonalPaint1\PaintWPF\PaintWPF\PaintWPF\obj\Debug\PaintWPF.Properties.Resources.resources
+E:\Универ\2 course\ООП\MyPersonalPaint1\PaintWPF\PaintWPF\PaintWPF\obj\Debug\PaintWPF.csproj.GenerateResource.Cache
+E:\Универ\2 course\ООП\MyPersonalPaint1\PaintWPF\PaintWPF\PaintWPF\obj\Debug\PaintWPF.exe
+E:\Универ\2 course\ООП\MyPersonalPaint1\PaintWPF\PaintWPF\PaintWPF\obj\Debug\PaintWPF.pdb
