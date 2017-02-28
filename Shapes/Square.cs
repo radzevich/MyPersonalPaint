@@ -1,12 +1,14 @@
-﻿namespace UserShapes
+﻿using System;
+
+namespace UserShapes
 {
-    class Square : Shape
+    class Square : Symmetric
     {
-        protected int side { get; set; }
+        public Square(Point anchor, Point cursor) : base(anchor, cursor) { }
 
         public override void draw()
         {
-
-        }
+            throw new NotImplementedException();
+        }  
     }
 }

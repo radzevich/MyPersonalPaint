@@ -2,9 +2,9 @@
 
 namespace UserShapes
 {
-    class Rectangle : Assymmetric
+    sealed class Line : Shape
     {
-        public Rectangle(Point anchor, Point cursor) : base(anchor, cursor)
+        public Line(Point anchor, Point cursor) : base(anchor, cursor)
         {
         }
 

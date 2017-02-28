@@ -2,9 +2,9 @@
 
 namespace UserShapes
 {
-    class Rectangle : Assymmetric
+    class IsoscalesTriangle : Symmetric
     {
-        public Rectangle(Point anchor, Point cursor) : base(anchor, cursor)
+        public IsoscalesTriangle(Point anchor, Point cursor) : base(anchor, cursor)
         {
         }
 

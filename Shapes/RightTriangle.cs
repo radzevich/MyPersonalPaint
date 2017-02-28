@@ -2,11 +2,9 @@
 
 namespace UserShapes
 {
-    class Rectangle : Assymmetric
+    class RightTriangle : Assymmetric
     {
-        public Rectangle(Point anchor, Point cursor) : base(anchor, cursor)
-        {
-        }
+        public RightTriangle(Point anchor, Point cursor) : base(anchor, cursor) { }
 
         public override void draw()
         {

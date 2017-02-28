@@ -55,10 +55,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Shapes\Asymmetric.cs" />
+    <Compile Include="Shapes\Ellipse.cs" />
+    <Compile Include="Shapes\IsoscalesTriangle.cs" />
+    <Compile Include="Shapes\Line.cs" />
+    <Compile Include="Shapes\Polygon.cs" />
     <Compile Include="Shapes\Rectangle.cs" />
     <Compile Include="Shapes\Shape.cs" />
     <Compile Include="Shapes\Square.cs" />
-    <Compile Include="Shapes\Triangle.cs" />
+    <Compile Include="Shapes\Symmetric.cs" />
+    <Compile Include="Shapes\RightTriangle.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

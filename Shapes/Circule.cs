@@ -1,12 +1,14 @@
-﻿namespace UserShapes
+﻿using System;
+
+namespace UserShapes
 {
-    class Circule : Shape
+    class Circle : Symmetric
     {
-        protected int radius { get; set; }
+        public Circle(Point anchor, Point cursor) : base (anchor, cursor) { }
       
         public override void draw()
         {
-            
+            throw new NotImplementedException();
         }
     }
 }

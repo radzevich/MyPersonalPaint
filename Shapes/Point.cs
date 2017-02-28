@@ -38,5 +38,17 @@ namespace UserShapes
             X = x;
             Y = y;
         }
+
+        public bool isNullPoint()
+        {
+            return ((x == 0) & (y == 0));
+        }
+
+        public double distanceTo(Point point)
+        {
+            long xDistance = point.X - x;
+            long yDistance = point.Y - y;
+            return (Math.Sqrt (Math.Pow(xDistance, 2) + Math.Pow(yDistance, 2)));
+        }
     }
 }

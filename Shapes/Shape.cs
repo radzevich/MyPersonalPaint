@@ -3,38 +3,41 @@
     //The base class for all geometric shapes.
     abstract class Shape
     {
-        private Point anchorPoint;
+        private Point anchor;
+        private Point cursor;
 
-        public Point AnchorPoint
+        public Point Anchor
         {
-            get { return this.anchorPoint; }
+            get { return this.anchor; }
             set
             {
                 if (null == value)
                 {
                     throw new System.ArgumentNullException();
                 }
-                this.anchorPoint = value;
+                this.anchor = value;
             }
         }
 
-        public Shape()
+        public Point Cursor
         {
-            try
+            get { return this.cursor; }
+            set
             {
-                AnchorPoint = new Point(0, 0);
-            }
-            catch
-            {
-                throw;
+                if (null == value)
+                {
+                    throw new System.ArgumentNullException();
+                }
+                this.cursor = value;
             }
         }
 
-        public Shape(Point point)
+        public Shape(Point anchor, Point cursor)
         {
             try
             {
-                AnchorPoint = point;
+                Anchor = anchor;
+                Cursor = cursor;  
             }
             catch
             {

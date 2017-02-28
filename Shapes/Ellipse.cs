@@ -2,9 +2,9 @@
 
 namespace UserShapes
 {
-    class Rectangle : Assymmetric
+    class Ellipse : Assymmetric
     {
-        public Rectangle(Point anchor, Point cursor) : base(anchor, cursor)
+        public Ellipse(Point anchor, Point cursor) : base(anchor, cursor)
         {
         }
 
