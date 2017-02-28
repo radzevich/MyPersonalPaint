@@ -1,6 +1,6 @@
-﻿using System;
+﻿using System.Windows.Controls;
 
-namespace UserShapes
+namespace PaintWPF
 {
     sealed class Line : Shape
     {
@@ -8,9 +8,9 @@ namespace UserShapes
         {
         }
 
-        public override void draw()
+        public override void draw(Canvas canvas)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

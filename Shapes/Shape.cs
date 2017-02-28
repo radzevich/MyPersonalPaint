@@ -1,4 +1,6 @@
-﻿namespace UserShapes
+﻿using System.Windows.Controls;
+
+namespace PaintWPF
 {
     //The base class for all geometric shapes.
     abstract class Shape
@@ -45,6 +47,6 @@
             }
         }
 
-        abstract public void draw();
+        abstract public void draw(Canvas canvas);
     }
 }

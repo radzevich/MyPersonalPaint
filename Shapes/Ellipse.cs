@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Windows.Controls;
 
-namespace UserShapes
+namespace PaintWPF
 {
     class Ellipse : Assymmetric
     {
@@ -8,7 +9,7 @@ namespace UserShapes
         {
         }
 
-        public override void draw()
+        public override void draw(Canvas canvas)
         {
             throw new NotImplementedException();
         }

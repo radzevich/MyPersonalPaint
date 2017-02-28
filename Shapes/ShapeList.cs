@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace UserShapes
+namespace PaintWPF
 {
     class ShapeList : List<Shape>
     {

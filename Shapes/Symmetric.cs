@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace UserShapes
+namespace PaintWPF
 {
     abstract class Symmetric : Polygon
     {

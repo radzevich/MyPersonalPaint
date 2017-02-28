@@ -1,12 +1,13 @@
-﻿using System;
+﻿using System.Windows.Controls;
+using System;
 
-namespace UserShapes
+namespace PaintWPF
 {
     class Circle : Symmetric
     {
         public Circle(Point anchor, Point cursor) : base (anchor, cursor) { }
       
-        public override void draw()
+        public override void draw(Canvas canvas)
         {
             throw new NotImplementedException();
         }

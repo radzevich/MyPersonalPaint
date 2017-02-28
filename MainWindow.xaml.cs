@@ -25,11 +25,16 @@ namespace PaintWPF
         {
             InitializeComponent();
 
+            var canvas = new Canvas();
+            canvas.Width = SystemParameters.WorkArea.Width;
+            canvas.Height = SystemParameters.WorkArea.Height;
+
             var shapeList = new ShapeList();
             foreach (UserShapes.Shape shape in shapeList)
             {
                 shape.draw();
             }
+
         }
     }
 }
