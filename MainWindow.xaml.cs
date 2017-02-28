@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UserShapes;
 
 namespace PaintWPF
 {
@@ -24,6 +25,11 @@ namespace PaintWPF
         {
             InitializeComponent();
 
+            var shapeList = new ShapeList();
+            foreach (UserShapes.Shape shape in shapeList)
+            {
+                shape.draw();
+            }
         }
     }
 }
