@@ -23,6 +23,7 @@ namespace PaintWPF
         public MainWindow()
         {
             InitializeComponent();
+
         }
     }
 }

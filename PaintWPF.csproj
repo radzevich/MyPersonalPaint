@@ -62,6 +62,7 @@
     <Compile Include="Shapes\Polygon.cs" />
     <Compile Include="Shapes\Rectangle.cs" />
     <Compile Include="Shapes\Shape.cs" />
+    <Compile Include="Shapes\ShapeList.cs" />
     <Compile Include="Shapes\Square.cs" />
     <Compile Include="Shapes\Symmetric.cs" />
     <Compile Include="Shapes\RightTriangle.cs" />
