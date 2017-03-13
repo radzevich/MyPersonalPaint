@@ -9,27 +9,27 @@ namespace PaintWPF
         
         public int X
         {
-            get { return this.x; }
+            get { return x; }
             set
             {
                 if (value < 0)
                 {
                     throw new ArgumentOutOfRangeException();
                 }
-                this.x = value;
+                x = value;
             }                 
         }
 
         public int Y
         {
-            get { return this.y; }
+            get { return y; }
             set
             {
                 if (value < 0)
                 {
                     throw new ArgumentOutOfRangeException();
                 }
-                this.y = value;
+                y = value;
             }
         }
 
@@ -39,10 +39,12 @@ namespace PaintWPF
             Y = y;
         }
 
+        /*
         public bool isNullPoint()
         {
             return ((x == 0) & (y == 0));
         }
+        */
 
         public double distanceTo(Point point)
         {

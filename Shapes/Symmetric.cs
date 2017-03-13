@@ -6,8 +6,6 @@ namespace PaintWPF
     {
         public Symmetric(Point anchor, Point cursor) : base (anchor, cursor)
         {
-            try
-            {
                 int length = Math.Max(Math.Abs(Anchor.X - Cursor.X), Math.Abs(Anchor.Y - Cursor.Y));
 
                 if (Anchor.Y > Cursor.Y)
@@ -26,11 +24,6 @@ namespace PaintWPF
                 {
                       Cursor.X = Anchor.X + length;
                 }  
-            }
-            catch
-            {
-                throw;
-            }
         }
     }
 }

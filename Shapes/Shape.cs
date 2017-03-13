@@ -36,15 +36,8 @@ namespace PaintWPF
 
         public Shape(Point anchor, Point cursor)
         {
-            try
-            {
-                Anchor = anchor;
-                Cursor = cursor;  
-            }
-            catch
-            {
-                throw;
-            }
+            Anchor = anchor;
+            Cursor = cursor;  
         }
 
         abstract public void draw(Canvas canvas);
