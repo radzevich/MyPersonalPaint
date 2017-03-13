@@ -10,27 +10,27 @@ namespace PaintWPF
 
         public Point Anchor
         {
-            get { return this.anchor; }
+            get { return anchor; }
             set
             {
                 if (null == value)
                 {
                     throw new System.ArgumentNullException();
                 }
-                this.anchor = value;
+                anchor = value;
             }
         }
 
         public Point Cursor
         {
-            get { return this.cursor; }
+            get { return cursor; }
             set
             {
                 if (null == value)
                 {
                     throw new System.ArgumentNullException();
                 }
-                this.cursor = value;
+                cursor = value;
             }
         }
 

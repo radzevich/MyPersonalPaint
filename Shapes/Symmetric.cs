@@ -8,28 +8,24 @@ namespace PaintWPF
         {
             try
             {
-                if (Math.Abs(base.Anchor.X - Cursor.X) > Math.Abs(Anchor.Y - Cursor.Y))
+                int length = Math.Max(Math.Abs(Anchor.X - Cursor.X), Math.Abs(Anchor.Y - Cursor.Y));
+
+                if (Anchor.Y > Cursor.Y)
                 {
-                    if (Anchor.Y > Cursor.Y)
-                    {
-                        Cursor.Y = Anchor.Y - Math.Abs(Anchor.X - Cursor.X);
-                    }
-                    else
-                    {
-                        Cursor.Y = Anchor.Y + Math.Abs(Anchor.X - Cursor.X);
-                    }
+                      Cursor.Y = Anchor.Y - length;
                 }
                 else
                 {
-                    if (Anchor.X > Cursor.X)
-                    {
-                        Cursor.X = Anchor.X - Math.Abs(Anchor.Y - Cursor.Y);
-                    }
-                    else
-                    {
-                        Cursor.X = Anchor.X + Math.Abs(Anchor.Y - Cursor.Y);
-                    }
+                    Cursor.Y = Anchor.Y + length;
+                }      
+                if (Anchor.X > Cursor.X)
+                {
+                      Cursor.X = Anchor.X - length;
                 }
+                else
+                {
+                      Cursor.X = Anchor.X + length;
+                }  
             }
             catch
             {

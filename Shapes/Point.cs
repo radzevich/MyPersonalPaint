@@ -2,7 +2,7 @@
 
 namespace PaintWPF
 {
-    class Point
+    sealed class Point
     {
         private int x;
         private int y;
