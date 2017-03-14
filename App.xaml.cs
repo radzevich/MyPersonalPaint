@@ -13,5 +13,6 @@ namespace PaintWPF
     /// </summary>
     public partial class App : Application
     {
+        
     }
 }
