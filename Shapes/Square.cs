@@ -9,7 +9,7 @@ namespace PaintWPF
 
         public override void draw(Canvas canvas)
         {
-            throw new NotImplementedException();
+             
         }  
     }
 }

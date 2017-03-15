@@ -23,10 +23,47 @@ namespace PaintWPF
         public MainWindow()
         {
             InitializeComponent();
+        }
 
-            var canvas = new Canvas();
-            canvas.Width = SystemParameters.WorkArea.Width;
-            canvas.Height = SystemParameters.WorkArea.Height;
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            var circle = new System.Windows.Shapes.Ellipse();
+            drawingBox.Children.Add(circle);
+            
+        }
+
+        private void Circle_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Drawer
+        }
+
+        private void Line_Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Right_Triangle_Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Isoscale_Triangle_Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Rectangle_Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Square_Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Ellipse_Button_Click(object sender, RoutedEventArgs e)
+        {
 
         }
     }
