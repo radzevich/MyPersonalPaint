@@ -3,31 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using PaintWPF;
 
 namespace PaintWPF.Logic
 {
     static class Drawer
     {
-        delegate void delegateDraw(Shape shape);
+        //Use frame's coords for drawing shape inside 
+        private static Rectangle frame;
 
-        static void DrawLine(Shape shape) { }
+        public delegate void delegateDraw();
+        public static delegateDraw draw;
 
-        static void DrawRectangle(Shape shape) { }
+        public static void DrawLine() { }
 
-        static void DrawSquare(Shape shape) { }
+        public static void DrawRectangle() { }
 
-        static void DrawCircle(Shape shape) { }
+        public static void DrawSquare() { }
 
-        static void DrawEllipse(Shape shape) { }
+        public static void DrawCircle() { }
 
-        static void DrawRightTriangle(Shape shape) { }
+        public static void DrawEllipse() { }
 
-        static void DrawIsoscalesTriangle(Shape shape) { }
+        public static void DrawRightTriangle() { }
 
-        static void Draw(delegateDraw draw, Shape shape)
+        public static void DrawIsoscalesTriangle() { }
+
+        public static void Draw()
         {
-            
+            DrawRectangle();            //drawing frame
+            draw();                     //drawing shape inside the frame
         }
     }
 }

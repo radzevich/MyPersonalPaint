@@ -34,7 +34,7 @@ namespace PaintWPF
 
         private void Circle_Button_Click(object sender, RoutedEventArgs e)
         {
-            Drawer
+            //Logic.Drawer.draw = Logic.Drawer.DrawCircle();
         }
 
         private void Line_Button_Click(object sender, RoutedEventArgs e)
