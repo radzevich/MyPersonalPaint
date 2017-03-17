@@ -55,17 +55,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Shapes\Asymmetric.cs" />
-    <Compile Include="Shapes\Ellipse.cs" />
-    <Compile Include="Shapes\IsoscalesTriangle.cs" />
-    <Compile Include="Shapes\Line.cs" />
-    <Compile Include="Shapes\Polygon.cs" />
-    <Compile Include="Shapes\Rectangle.cs" />
-    <Compile Include="Shapes\Shape.cs" />
-    <Compile Include="Shapes\ShapeList.cs" />
-    <Compile Include="Shapes\Square.cs" />
-    <Compile Include="Shapes\Symmetric.cs" />
-    <Compile Include="Shapes\RightTriangle.cs" />
+    <Compile Include="Drawers\CircleDrawer.cs" />
+    <Compile Include="Drawers\Drawer.cs" />
+    <Compile Include="Drawers\EllipseDrawer.cs" />
+    <Compile Include="Drawers\IsoscaleTriangleDrawer.cs" />
+    <Compile Include="Drawers\LineDrawer.cs" />
+    <Compile Include="Drawers\RectangleDrawer.cs" />
+    <Compile Include="Drawers\RightTriangleDrawer.cs" />
+    <Compile Include="Drawers\Base.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -74,14 +71,23 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Shapes\Circule.cs" />
+    <Compile Include="Drawers\SquareDrawer.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Shapes\Point.cs" />
+    <Compile Include="Drawers\Point.cs" />
+    <Compile Include="meta\Assymetric.cs" />
+    <Compile Include="meta\Circle.cs" />
+    <Compile Include="meta\IsoscaleTriangle.cs" />
+    <Compile Include="meta\Line.cs" />
+    <Compile Include="meta\Rectangle.cs" />
+    <Compile Include="meta\RightTriangle.cs" />
+    <Compile Include="meta\Symmetric.cs" />
+    <Compile Include="meta\Shape.cs" />
+    <Compile Include="meta\Square.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -112,14 +118,17 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img\circle.png" />
-    <Resource Include="img\ellipse.png" />
-    <Resource Include="img\isoscale_triangle.png" />
-    <Resource Include="img\line.png" />
-    <Resource Include="img\rectangle.png" />
-    <Resource Include="img\right_triangle.png" />
-    <Resource Include="img\shapes.png" />
-    <Resource Include="img\square.png" />
+    <Resource Include="img\Circle.png" />
+    <Resource Include="img\Ellipse.png" />
+    <Resource Include="img\IsoscaleTriangle.png" />
+    <Resource Include="img\Line.png" />
+    <Resource Include="img\Rectangle.png" />
+    <Resource Include="img\RightTriangle.png" />
+    <Resource Include="img\Shapes.png" />
+    <Resource Include="img\Square.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="meta\Ellipse.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -66,5 +66,15 @@ namespace PaintWPF
         {
 
         }
+
+        private void drawingBox_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void drawingBox_PreviewDragOver(object sender, DragEventArgs e)
+        {
+
+        }
     }
 }
