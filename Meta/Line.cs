@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace PaintWPF.meta
 {
-    class Line
+    class Line : Assymetric
     {
+        public Line() { }
     }
 }

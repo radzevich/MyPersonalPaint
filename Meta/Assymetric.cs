@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace PaintWPF.meta
 {
-    class Assymetric
+    abstract class Assymetric : Shape
     {
+        public override bool RightShape => false;
     }
 }

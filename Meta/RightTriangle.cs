@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace PaintWPF.meta
 {
-    class RightTriangle
+    class RightTriangle : Assymetric
     {
+        public RightTriangle() { }
     }
 }

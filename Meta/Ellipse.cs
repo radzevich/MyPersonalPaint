@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace PaintWPF.meta
 {
-    class Ellipse
+    class Ellipse : Assymetric
     {
+        public Ellipse() { }
     }
 }

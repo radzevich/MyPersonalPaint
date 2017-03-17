@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace PaintWPF.Drawers
 {
-    class LineDrawer : Drawer
+    class CircleDrawer : Drawer
     {
-        public override meta.Shape Meta { get { return new meta.Line(); } }
+        public override meta.Shape Meta { get { return new meta.Circle(); } }
 
         public override void draw(Point anchor, Point cursor)
         {

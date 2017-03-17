@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace PaintWPF.meta
 {
-    class Square
+    class Square : Symmetric
     {
+        public Square() { }
     }
 }

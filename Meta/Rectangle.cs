@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace PaintWPF.meta
 {
-    class Rectangle
+    class Rectangle : Assymetric
     {
+        public Rectangle() { }
     }
 }

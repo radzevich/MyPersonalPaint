@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace PaintWPF.meta
 {
-    class IsoscaleTriangle
+    class IsoscaleTriangle : Assymetric
     {
+        public IsoscaleTriangle() { }
     }
 }

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace PaintWPF.meta
 {
-    class Circle
+    class Circle : Symmetric
     {
+        public Circle() {}
     }
 }
