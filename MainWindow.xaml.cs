@@ -23,18 +23,28 @@ namespace PaintWPF
         public MainWindow()
         {
             InitializeComponent();
+            
+            var line = new Line();                          //TODO replace absolute position
+            line.X1 = 80;
+            line.Y1 = 0;
+            line.X2 = 500;
+            line.Y2 = 100;
+            line.Stroke = Brushes.LightSteelBlue;
+            line.StrokeThickness = 2;
+            drawingBox.Children.Add(line);
+
+            //drawingBox.Children.Add(line);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             var circle = new System.Windows.Shapes.Ellipse();
-            drawingBox.Children.Add(circle);
             
         }
 
         private void Circle_Button_Click(object sender, RoutedEventArgs e)
         {
-            //Logic.Drawer.draw = Logic.Drawer.DrawCircle();
+            
         }
 
         private void Line_Button_Click(object sender, RoutedEventArgs e)

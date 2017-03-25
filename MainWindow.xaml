@@ -1,4 +1,4 @@
-﻿<Window x:Class="PaintWPF.MainWindow"
+﻿<Window x:Class="PaintWPF.MainWindow" x:Name="PaintMainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,33 +7,26 @@
         mc:Ignorable="d"
         Title="My Personal Paint" Height="800" Width="1500"
         Loaded="Window_Loaded">
-    <Grid x:Name="LayoutRoot" Background="White" ShowGridLines="False">
+    <Grid x:Name="LayoutRoot" Background="White" ShowGridLines="False" >
         <Grid.ColumnDefinitions>
+            <!--Tools panel-->
             <ColumnDefinition Width="80"/>
+            <!--Drawing field (canvas)-->
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <Canvas x:Name="drawingBox" Grid.Row="1" Grid.RowSpan="1" 
-                MouseLeftButtonDown="drawingBox_MouseLeftButtonDown" 
-                PreviewDragOver="drawingBox_PreviewDragOver"
-                />
+        
+        <!--Tools panel definition-->
         <Grid Grid.Column="0" Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            
-            <Grid.RowDefinitions x:Name="Button_Rows" Button.Click="Button_Rows_Click">
-                <!--
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="40"/>
-                -->
-            </Grid.RowDefinitions>
             <Grid.Background>
                 <SolidColorBrush Color="DimGray" />
             </Grid.Background>
         </Grid>
+        
+        <!--Drawing field-->
+        <Canvas x:Name="drawingBox" Grid.Row="1" Grid.RowSpan="1" 
+                MouseLeftButtonDown="drawingBox_MouseLeftButtonDown" 
+                PreviewDragOver="drawingBox_PreviewDragOver"
+        />
+
     </Grid>
 </Window>
