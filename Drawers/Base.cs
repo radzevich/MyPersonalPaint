@@ -7,6 +7,7 @@ namespace PaintWPF
     {
         private Point anchor;
         private Point cursor;
+        private readonly bool symmetric;
 
         public Point Anchor
         {

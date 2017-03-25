@@ -8,8 +8,6 @@ namespace PaintWPF.Drawers
 {
     class SquareDrawer : Drawer
     {
-        public override meta.Shape Meta { get { return new meta.Square(); } }
-
         public override void draw(Point anchor, Point cursor)
         {
             throw new NotImplementedException();
