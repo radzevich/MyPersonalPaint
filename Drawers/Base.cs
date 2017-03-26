@@ -1,5 +1,5 @@
 ﻿using System.Windows.Controls;
-
+/*
 namespace PaintWPF
 {
     //The base class for all geometric shapes.
@@ -41,4 +41,4 @@ namespace PaintWPF
             Cursor = cursor;  
         }
     }
-}
+}*/

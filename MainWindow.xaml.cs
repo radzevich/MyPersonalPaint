@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
+using PaintWPF.Drawers;
+using System.Windows.Ink;
 
 namespace PaintWPF
 {
@@ -22,13 +13,29 @@ namespace PaintWPF
     {
         public MainWindow()
         {
-            InitializeComponent();   
+            InitializeComponent();
+
+            var rectDrawer = new RectangleDrawer();
+            Stroke rect = rectDrawer.draw(new Point(50, 50), new Point(200, 200));
+
+            DrawingAttributes attribs = new DrawingAttributes();
+            //attribs.Color = ;//Colors.LimeGreen;
+            attribs.Height = 5.0;
+            attribs.Width = 5.0;
+            attribs.FitToCurve = false;
+            //drawingBox.IsEnabled = false;
+
+            rect.DrawingAttributes = attribs;
+
+                drawingBox.Strokes.Add(rect);
+            
+                //drawingBox.Strokes.Clear();
+            
         }
 
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            var circle = new System.Windows.Shapes.Ellipse();
+        { 
             
         }
 
@@ -74,6 +81,30 @@ namespace PaintWPF
 
         private void drawingBox_PreviewDragOver(object sender, DragEventArgs e)
         {
+
+        }
+
+        private void drawingBox_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.IsEnabled = !this.IsEnabled;
+        }
+
+        private void drawingBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            this.IsEnabled = !this.IsEnabled;
+
+            var myLine = new Line();
+            myLine.Stroke = System.Windows.Media.Brushes.LightSteelBlue;
+            myLine.X1 = 80;
+            myLine.X2 = 500;
+            myLine.Y1 = 10;
+            myLine.Y2 = 500;
+            myLine.HorizontalAlignment = HorizontalAlignment.Left;
+            myLine.VerticalAlignment = VerticalAlignment.Center;
+            myLine.StrokeThickness = 2;
+
+            AddVisualChild(myLine);
+            IsEnabled = !IsEnabled;
 
         }
     }

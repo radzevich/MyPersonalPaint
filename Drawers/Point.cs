@@ -1,5 +1,5 @@
 ﻿using System;
-
+/*
 namespace PaintWPF
 {
     class Point
@@ -39,12 +39,11 @@ namespace PaintWPF
             Y = y;
         }
 
-        /*
         public bool isNullPoint()
         {
             return ((x == 0) & (y == 0));
         }
-        */
+        
 
         public double distanceTo(Point point)
         {
@@ -54,3 +53,4 @@ namespace PaintWPF
         }
     }
 }
+*/

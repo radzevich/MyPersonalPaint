@@ -1,16 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Windows.Input;
+using System.Windows;
+using System.Windows.Ink;
 
 namespace PaintWPF.Drawers
 {
     class RectangleDrawer : Drawer
     {
-        public override void draw(Point anchor, Point cursor)
+        public override Stroke draw(Point anchor, Point cursor)
         {
-            throw new NotImplementedException();
+            var pointCollection = new StylusPointCollection();
+
+            pointCollection.Add(new StylusPoint(anchor.X, anchor.Y));
+            pointCollection.Add(new StylusPoint(cursor.X, anchor.Y));
+            pointCollection.Add(new StylusPoint(cursor.X, cursor.Y));
+            pointCollection.Add(new StylusPoint(anchor.X, cursor.Y));
+            pointCollection.Add(new StylusPoint(anchor.X, anchor.Y));
+
+            var rectangle = new Stroke(pointCollection);
+
+            return rectangle;                      
         }
+
+        public RectangleDrawer() : base () { }
     }
 }

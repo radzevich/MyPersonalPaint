@@ -25,8 +25,9 @@
         </Grid>
 
         <InkCanvas x:Name="drawingBox" Grid.Row="1" Grid.Column="1"
-                MouseLeftButtonDown="drawingBox_MouseLeftButtonDown" 
+                MouseRightButtonDown="drawingBox_MouseRightButtonDown" 
                 PreviewDragOver="drawingBox_PreviewDragOver"
+                KeyDown="drawingBox_KeyDown"
         />
 
     </Grid>

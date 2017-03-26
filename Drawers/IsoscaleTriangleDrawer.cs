@@ -1,16 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Windows.Input;
+using System.Windows;
+using System.Windows.Ink;
+using System;
 
 namespace PaintWPF.Drawers
 {
     class IsoscaleTriangleDrawer : Drawer
     {
-        public override void draw(Point anchor, Point cursor)
+        public override Stroke draw(Point anchor, Point cursor)
         {
             throw new NotImplementedException();
         }
+
+        public IsoscaleTriangleDrawer() : base () { }
     }
 }
