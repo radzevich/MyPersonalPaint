@@ -22,19 +22,9 @@ namespace PaintWPF
     {
         public MainWindow()
         {
-            InitializeComponent();
-            
-            var line = new Line();                          //TODO replace absolute position
-            line.X1 = 80;
-            line.Y1 = 0;
-            line.X2 = 500;
-            line.Y2 = 100;
-            line.Stroke = Brushes.LightSteelBlue;
-            line.StrokeThickness = 2;
-            drawingBox.Children.Add(line);
-
-            //drawingBox.Children.Add(line);
+            InitializeComponent();   
         }
+
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {

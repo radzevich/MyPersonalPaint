@@ -14,6 +14,8 @@
             <!--Drawing field (canvas)-->
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
+
+        <!--Drawing field-->
         
         <!--Tools panel definition-->
         <Grid Grid.Column="0" Grid.Row="0">
@@ -21,9 +23,8 @@
                 <SolidColorBrush Color="DimGray" />
             </Grid.Background>
         </Grid>
-        
-        <!--Drawing field-->
-        <Canvas x:Name="drawingBox" Grid.Row="1" Grid.RowSpan="1" 
+
+        <InkCanvas x:Name="drawingBox" Grid.Row="1" Grid.Column="1"
                 MouseLeftButtonDown="drawingBox_MouseLeftButtonDown" 
                 PreviewDragOver="drawingBox_PreviewDragOver"
         />
