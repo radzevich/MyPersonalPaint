@@ -79,15 +79,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Drawers\Point.cs" />
-    <Compile Include="meta\Assymetric.cs" />
-    <Compile Include="meta\Circle.cs" />
-    <Compile Include="meta\IsoscaleTriangle.cs" />
-    <Compile Include="meta\Line.cs" />
-    <Compile Include="meta\Rectangle.cs" />
-    <Compile Include="meta\RightTriangle.cs" />
-    <Compile Include="meta\Symmetric.cs" />
-    <Compile Include="meta\Shape.cs" />
-    <Compile Include="meta\Square.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -116,19 +107,6 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="img\Circle.png" />
-    <Resource Include="img\Ellipse.png" />
-    <Resource Include="img\IsoscaleTriangle.png" />
-    <Resource Include="img\Line.png" />
-    <Resource Include="img\Rectangle.png" />
-    <Resource Include="img\RightTriangle.png" />
-    <Resource Include="img\Shapes.png" />
-    <Resource Include="img\Square.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="meta\Ellipse.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
