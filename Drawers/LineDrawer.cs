@@ -9,7 +9,13 @@ namespace PaintWPF.Drawers
     {
         public override Stroke draw(Point anchor, Point cursor)
         {
-            throw new NotImplementedException();
+            var pointCollection = new StylusPointCollection();
+
+            pointCollection.Add(new StylusPoint(anchor.X, anchor.Y));
+            pointCollection.Add(new StylusPoint(cursor.X, cursor.Y));
+
+            var line = new Stroke(pointCollection);
+            return line;
         }
 
         public LineDrawer() : base () { }

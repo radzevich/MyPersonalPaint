@@ -3,6 +3,8 @@ using System.Windows.Input;
 using System.Windows.Shapes;
 using PaintWPF.Drawers;
 using System.Windows.Ink;
+using System.Windows.Media;
+using System.Windows.Controls;
 
 namespace PaintWPF
 {
@@ -15,8 +17,8 @@ namespace PaintWPF
         {
             InitializeComponent();
 
-            var rectDrawer = new RectangleDrawer();
-            Stroke rect = rectDrawer.draw(new Point(50, 50), new Point(200, 200));
+            var shapeDrawer = new RightTriangleDrawer();
+            Stroke rect = shapeDrawer.draw(new Point(50, 500), new Point(200, 200));
 
             DrawingAttributes attribs = new DrawingAttributes();
             //attribs.Color = ;//Colors.LimeGreen;
@@ -28,9 +30,23 @@ namespace PaintWPF
             rect.DrawingAttributes = attribs;
 
                 drawingBox.Strokes.Add(rect);
-            
-                //drawingBox.Strokes.Clear();
-            
+
+            //drawingBox.Strokes.Clear();
+            var circle = new Ellipse();
+            var firstPoint = new Point(00, 100);
+            circle.Width = 5;
+            circle.Height = 5;
+            circle.Stroke = Brushes.Black;
+            circle.Width = 65;
+            circle.Height = 70;
+            //InkCanvas.SetTop(circle, firstPoint.Y);
+            //InkCanvas.SetLeft(circle, firstPoint.X);
+            drawingBox.Strokes.Draw()
+        }
+
+        protected override void OnRender(DrawingContext dc)
+        {
+
         }
 
 

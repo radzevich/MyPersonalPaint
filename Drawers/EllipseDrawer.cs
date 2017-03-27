@@ -10,7 +10,9 @@ namespace PaintWPF.Drawers
     {
         public override Stroke draw(Point anchor, Point cursor)
         {
-            
+            var circle = new System.Windows.Shapes.Ellipse();
+            //Stroke stroke = circle.StrokeEndLineCap;
+            throw new NotImplementedException();
         }
 
         public EllipseDrawer() : base () { }

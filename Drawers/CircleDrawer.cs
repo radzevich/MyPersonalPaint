@@ -9,7 +9,7 @@ namespace PaintWPF.Drawers
     {
         public override Stroke draw(Point anchor, Point cursor)
         {
-            throw new NotImplementedException();
+            throw new NotFiniteNumberException();
         }
 
         public CircleDrawer() : base () { }

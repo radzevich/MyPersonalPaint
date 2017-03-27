@@ -8,6 +8,7 @@ namespace PaintWPF.Drawers
     {
         public override Stroke draw(Point anchor, Point cursor)
         {
+            
             var pointCollection = new StylusPointCollection();
 
             pointCollection.Add(new StylusPoint(anchor.X, anchor.Y));
@@ -17,7 +18,7 @@ namespace PaintWPF.Drawers
             pointCollection.Add(new StylusPoint(anchor.X, anchor.Y));
 
             var rectangle = new Stroke(pointCollection);
-
+            
             return rectangle;                      
         }
 
