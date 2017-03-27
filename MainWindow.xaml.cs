@@ -13,6 +13,18 @@ namespace PaintWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        private DrawingContext dc;
+
+        public DrawingContext Dc
+        {
+            get { return this.dc; }
+            set
+            {
+                dc = value;
+                
+            }
+        }
+
         public MainWindow()
         {
             InitializeComponent();
@@ -29,99 +41,38 @@ namespace PaintWPF
 
             rect.DrawingAttributes = attribs;
 
-                drawingBox.Strokes.Add(rect);
+            drawingBox.Strokes.Add(rect);
 
             //drawingBox.Strokes.Clear();
-            var circle = new Ellipse();
+            /*var circle = new Ellipse();
             var firstPoint = new Point(00, 100);
             circle.Width = 5;
             circle.Height = 5;
             circle.Stroke = Brushes.Black;
             circle.Width = 65;
-            circle.Height = 70;
+            circle.Height = 70;*/
             //InkCanvas.SetTop(circle, firstPoint.Y);
             //InkCanvas.SetLeft(circle, firstPoint.X);
-            drawingBox.Strokes.Draw()
+            //drawingBox.Strokes.Draw()
+
+            this.InvalidateVisual();
+            Pen myPen = new Pen(Brushes.Black, 3);
+            if (dc != null)
+            {
+                dc.DrawLine(myPen, new Point(100, 100), new Point(500, 500));
+                drawingBox.Strokes.Draw(dc);
+            }
         }
 
         protected override void OnRender(DrawingContext dc)
         {
+            base.OnRender(dc);
 
-        }
-
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        { 
-            
-        }
-
-        private void Circle_Button_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        private void Line_Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Right_Triangle_Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Isoscale_Triangle_Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Rectangle_Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Square_Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Ellipse_Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void drawingBox_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-
-        }
-
-        private void drawingBox_PreviewDragOver(object sender, DragEventArgs e)
-        {
-
-        }
-
-        private void drawingBox_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            this.IsEnabled = !this.IsEnabled;
-        }
-
-        private void drawingBox_KeyDown(object sender, KeyEventArgs e)
-        {
-            this.IsEnabled = !this.IsEnabled;
-
-            var myLine = new Line();
-            myLine.Stroke = System.Windows.Media.Brushes.LightSteelBlue;
-            myLine.X1 = 80;
-            myLine.X2 = 500;
-            myLine.Y1 = 10;
-            myLine.Y2 = 500;
-            myLine.HorizontalAlignment = HorizontalAlignment.Left;
-            myLine.VerticalAlignment = VerticalAlignment.Center;
-            myLine.StrokeThickness = 2;
-
-            AddVisualChild(myLine);
-            IsEnabled = !IsEnabled;
-
+            Pen myPen = new Pen(Brushes.Black, 3);
+            dc.DrawLine(myPen, new Point(100, 100), new Point(500, 500));
+            drawingBox.Strokes.Draw(dc);
         }
     }
 }
+
+
