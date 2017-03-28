@@ -5,9 +5,9 @@ using System;
 
 namespace PaintWPF.Shapes
 {
-    class RightTriangle : Shape
+    class RightTriangleDrawer : Shape
     {
-        public override StylusPointCollection GetShapePointCollection(Point anchor, Point cursor)
+        public override Stroke getShapeStroke(Point anchor, Point cursor)
         {
             var pointCollection = new StylusPointCollection();
 
@@ -16,9 +16,10 @@ namespace PaintWPF.Shapes
             pointCollection.Add(new StylusPoint(anchor.X, cursor.Y));
             pointCollection.Add(new StylusPoint(anchor.X, anchor.Y));
 
-            return pointCollection;
+            var triangle = new Stroke(pointCollection);
+            return triangle;
         }
 
-        public RightTriangle() : base () { }
+        public RightTriangleDrawer() : base () { }
     }
 }

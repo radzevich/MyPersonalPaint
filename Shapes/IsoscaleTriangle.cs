@@ -5,18 +5,20 @@ using System;
 
 namespace PaintWPF.Shapes
 {
-    class Line : Shape
+    class IsoscaleTriangle : Shape
     {
         public override StylusPointCollection GetShapePointCollection(Point anchor, Point cursor)
         {
             var pointCollection = new StylusPointCollection();
 
-            pointCollection.Add(new StylusPoint(anchor.X, anchor.Y));
+            pointCollection.Add(new StylusPoint(anchor.X, cursor.Y));
+            pointCollection.Add(new StylusPoint((cursor.X + anchor.X) / 2, anchor.Y));
             pointCollection.Add(new StylusPoint(cursor.X, cursor.Y));
+            pointCollection.Add(new StylusPoint(anchor.X, cursor.Y));
 
             return pointCollection;
         }
 
-        public Line() : base () { }
+        public IsoscaleTriangle() : base () { }
     }
 }

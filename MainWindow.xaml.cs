@@ -1,10 +1,10 @@
 ﻿using System.Windows;
 using System.Windows.Input;
-using System.Windows.Shapes;
-using PaintWPF.Drawers;
+using PaintWPF.Shapes;
 using System.Windows.Ink;
 using System.Windows.Media;
 using System.Windows.Controls;
+using PaintWPF.Drawers;
 
 namespace PaintWPF
 {
@@ -17,9 +17,9 @@ namespace PaintWPF
         {
             InitializeComponent();
 
-            var drawer = new StarDrawer();
-            var stroke = drawer.draw(new Point(100, 100), new Point(200, 200));
-            drawingBox.Strokes.Add(stroke);
+            //Call this code by event
+            //var drawer = new Drawer(new Line());
+            //drawingBox.Strokes.Add(drawer.draw(new Point(100, 100), new Point(300, 300)));
         }
     }
 }

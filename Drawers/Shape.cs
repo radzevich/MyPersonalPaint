@@ -1,48 +1,17 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Ink;
 
-namespace PaintWPF
+namespace PaintWPF.Shapes
 {
-    //The base class for all geometric shapes.
     abstract class Shape
     {
-        private Point anchor;
-        private Point cursor;
-        private readonly bool rightShape; 
+        public abstract Stroke getShapeStroke(Point anchor, Point cursor);
 
-        public Point Anchor
-        {
-            get { return anchor; }
-            set
-            {
-                if (null == value)
-                {
-                    throw new System.ArgumentNullException();
-                }
-                anchor = value;
-            }
-        }
-
-        public Point Cursor
-        {
-            get { return cursor; }
-            set
-            {
-                if (null == value)
-                {
-                    throw new System.ArgumentNullException();
-                }
-                cursor = value;
-            }
-        }
-
-        public bool isRightShape { get { return rightShape; } }
-
-        public Shape(Point anchor, Point cursor)
-        {
-            Anchor = anchor;
-            Cursor = cursor;  
-        }
-
-        abstract public void draw(Canvas canvas);
+        public Shape() { }
     }
 }

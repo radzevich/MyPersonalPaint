@@ -1,15 +1,25 @@
-﻿using System;
-using System.Windows.Controls;
+﻿using System.Windows.Input;
+using System.Windows;
+using System.Windows.Ink;
 
-namespace PaintWPF
+namespace PaintWPF.Shapes
 {
-    class Rectangle : Assymmetric
+    class Rectangle : Shape
     {
-        public Rectangle(Point anchor, Point cursor) : base(anchor, cursor) { }
-
-        public override void draw(Canvas canvas)
+        public override StylusPointCollection GetShapePointCollection(Point anchor, Point cursor)
         {
-            throw new NotImplementedException();
+            
+            var pointCollection = new StylusPointCollection();
+
+            pointCollection.Add(new StylusPoint(anchor.X, anchor.Y));
+            pointCollection.Add(new StylusPoint(cursor.X, anchor.Y));
+            pointCollection.Add(new StylusPoint(cursor.X, cursor.Y));
+            pointCollection.Add(new StylusPoint(anchor.X, cursor.Y));
+            pointCollection.Add(new StylusPoint(anchor.X, anchor.Y));
+
+            return pointCollection;                     
         }
+
+        public Rectangle() : base () { }
     }
 }

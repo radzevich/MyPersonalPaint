@@ -5,18 +5,19 @@ using System;
 
 namespace PaintWPF.Shapes
 {
-    class Line : Shape
+    class LineDrawer : Shape
     {
-        public override StylusPointCollection GetShapePointCollection(Point anchor, Point cursor)
+        public override Stroke getShapeStroke(Point anchor, Point cursor)
         {
             var pointCollection = new StylusPointCollection();
 
             pointCollection.Add(new StylusPoint(anchor.X, anchor.Y));
             pointCollection.Add(new StylusPoint(cursor.X, cursor.Y));
 
-            return pointCollection;
+            var line = new Stroke(pointCollection);
+            return line;
         }
 
-        public Line() : base () { }
+        public LineDrawer() : base () { }
     }
 }
