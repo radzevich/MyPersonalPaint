@@ -9,22 +9,46 @@
     <Grid x:Name="LayoutRoot" Background="White" ShowGridLines="False" >
         <Grid.ColumnDefinitions>
             <!--Tools panel-->
-            <ColumnDefinition Width="80"/>
+            <ColumnDefinition Width="60"/>
             <!--Drawing field (canvas)-->
             <ColumnDefinition />
+            <ColumnDefinition Width="15"/>
         </Grid.ColumnDefinitions>
 
-        <!--Drawing field-->
-        
         <!--Tools panel definition-->
         <Grid Grid.Column="0" Grid.Row="0">
             <Grid.Background>
                 <SolidColorBrush Color="DimGray" />
             </Grid.Background>
+            <Grid x:Name="ToolsPanel">
+                <Grid.RowDefinitions >
+                    <RowDefinition Height="60">
+                    </RowDefinition>
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="60" />
+                </Grid.RowDefinitions>
+
+                <Button x:Name="SelectButton" Grid.Row="0" Grid.Column="0" Click="SelectButton_Click"></Button>
+                <Button x:Name="PenButton" Grid.Row="1" Grid.Column="0" Click="PenButton_Click"></Button>
+                <Button x:Name="ChooseShapeButton" Grid.Row="2" Grid.Column="0" Click="ChooseShapeButton_Click"></Button>
+                <Button x:Name="SetParamsButton" Grid.Row="3" Grid.Column="0" Click="SetParamsButton_Click"></Button>
+                <Button x:Name="EraseButton" Grid.Row="4" Grid.Column="0" Click="EraseButton_Click"></Button>
+                
+                                   
+            </Grid>
         </Grid>
 
-        <InkCanvas x:Name="drawingBox" Grid.Row="1" Grid.Column="1"
-        />
+        <!--Drawing field-->
+        <InkCanvas x:Name="drawingBox" Grid.Row="0" Grid.Column="1" />
+
+        <!--Tools panel definition-->
+        <Grid x:Name="ColorPanel" Grid.Column="2" Grid.Row="0">
+            <Grid.Background>
+                <SolidColorBrush Color="DimGray" />
+            </Grid.Background>
+        </Grid>
 
     </Grid>
 </Window>
