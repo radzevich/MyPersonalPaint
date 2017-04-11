@@ -10,7 +10,7 @@
   <Class Name="PaintWPF.MainWindow" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="13" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>gAAAAAAgACAAAAAAEACIAAgAAACCAAAAAAABAAAAAAA=</HashCode>
+      <HashCode>QAAgAAAAAAAAAAEAAACAEAAAQQAACAAAAAAQAAAAQAA=</HashCode>
       <FileName>MainWindow.xaml.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />

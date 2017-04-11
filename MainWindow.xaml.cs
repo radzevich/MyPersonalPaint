@@ -39,9 +39,8 @@ namespace PaintWPF
 
 
             */
-            metaData = new MetaData(new Point(200, 200), new Point(300, 300));
-            drawer = new Drawer(new IsoscaleTriangle(), metaData);
-            drawingBox.Strokes.Add(drawer.drawWithFrame());
+ 
+           // drawingBox.Strokes.Add(drawer.drawWithFrame());
         }
 
         private void drawingBox_KeyDown(object sender, KeyEventArgs e)

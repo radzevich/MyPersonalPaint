@@ -30,22 +30,22 @@ namespace PaintWPF.Drawers
             strokeCollection.Add(shapeStroke);
             strokeCollection.Add(frameStroke);
 
-            var conf = new FrameConfig();
+           /* var conf = new FrameConfig();
 
             frameStroke.DrawingAttributes.Color = conf.DefaultPenColor;
             frameStroke.DrawingAttributes.Width = conf.DefaultThickness;
             frameStroke.DrawingAttributes.Height = conf.DefaultThickness;
             frameStroke.DrawingAttributes.IsHighlighter = true;
             
-
+*/
             return strokeCollection;
         }
 
-        public virtual Stroke drawFrame()
+        /*public virtual Stroke drawFrame()
         {
-            var frame = new Strokeframe(GetShapePointCollection(metaData.anchor, metaData.cursor));
+            var frame = new StrokeFrame(GetShapePointCollection(metaData.anchor, metaData.cursor));
         }
-
+        */
         public Drawer(Shape shape, MetaData metaData)
         {
             if ((shape == null) || (metaData == null))
