@@ -50,8 +50,8 @@ namespace PaintWPF.Shapes
             {
                 var point = new StylusPoint();
                 double fi = 72;//Math.Atan((div) * Math.Tan(angle));
-                point.X = (anchor.X + cursor.X) / 2 + (x / Math.Cos(fi));
-                point.Y = (anchor.X + cursor.X) / 2 + (y / Math.Sin(fi));
+                point.X = (anchor.X + cursor.X) / 2 + (x * Math.Cos(fi));
+                point.Y = (anchor.X + cursor.X) / 2 + (y * Math.Sin(fi));
                 //angle = angle + 360 / angleNum;
                 pointCollection.Add(point);
             }

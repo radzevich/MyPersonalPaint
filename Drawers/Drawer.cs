@@ -1,31 +1,59 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using PaintWPF.Shapes;
 using System.Windows;
 using System.Windows.Ink;
+using PaintWPF.Meta;
+using System.Media;
 
 namespace PaintWPF.Drawers
 {
     class Drawer
     {
         private readonly Shape shape;
+        private readonly MetaData metaData;
+        //public Stroke stroke { get; private set; }
 
-        public virtual Stroke draw(Point anchor, Point cursor)
+        public virtual Stroke draw()
         {
-            var stroke = new Stroke(shape.GetShapePointCollection(anchor, cursor));
+            var stroke = new Stroke(shape.GetShapePointCollection(metaData.anchor, metaData.cursor));
             return stroke;
         }
 
-        public Drawer(Shape shape)
+        public virtual StrokeCollection drawWithFrame()
         {
-            if (shape == null)
+            var strokeCollection = new StrokeCollection();
+
+            var shapeStroke = new Stroke(shape.GetShapePointCollection(metaData.anchor, metaData.cursor));
+            var frame = new Rectangle();
+            var frameStroke = new Stroke(frame.GetShapePointCollection(metaData.anchor, metaData.cursor));
+
+            strokeCollection.Add(shapeStroke);
+            strokeCollection.Add(frameStroke);
+
+            var conf = new FrameConfig();
+
+            frameStroke.DrawingAttributes.Color = conf.DefaultPenColor;
+            frameStroke.DrawingAttributes.Width = conf.DefaultThickness;
+            frameStroke.DrawingAttributes.Height = conf.DefaultThickness;
+            frameStroke.DrawingAttributes.IsHighlighter = true;
+            
+
+            return strokeCollection;
+        }
+
+        public virtual Stroke drawFrame()
+        {
+            var frame = new Strokeframe(GetShapePointCollection(metaData.anchor, metaData.cursor));
+        }
+
+        public Drawer(Shape shape, MetaData metaData)
+        {
+            if ((shape == null) || (metaData == null))
             {
                 throw new ArgumentNullException();
             }
             this.shape = shape;
+            this.metaData = metaData;
         }
     }
 }

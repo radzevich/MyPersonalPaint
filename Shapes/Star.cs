@@ -14,7 +14,7 @@ namespace PaintWPF.Shapes
             int rayNum = 5;                                                                                      //The number of rays in the star.
             double outsideRadius = Math.Min(Math.Abs(anchor.X - cursor.X), Math.Abs(anchor.Y - cursor.Y)) / 2;   //Getting radii of inscribed and circumscribed circles.
             double insideRadius = outsideRadius / 2;
-            double angle = 20;                                                                                   //Pitch angle.
+            double angle = 18;                                                                                   //Pitch angle.
             double x = (anchor.X + cursor.X) / 2;                                                                //Center coords
             double y = (anchor.Y + cursor.Y) / 2;
             double div = x / y;
