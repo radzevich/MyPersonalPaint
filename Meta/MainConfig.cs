@@ -64,7 +64,7 @@ namespace PaintWPF.Meta
             set { frameConfig.Color = value; }
         }
 
-        public double FramThickness
+        public double FrameThickness
         {
             get { return frameConfig.Width; }
             set
@@ -74,7 +74,7 @@ namespace PaintWPF.Meta
             }
         }
 
-        public bool FramHighliter
+        public bool FrameHighliter
         {
             get { return frameConfig.IsHighlighter; }
             set { frameConfig.IsHighlighter = value; }
