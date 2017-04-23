@@ -4,6 +4,9 @@ using PaintWPF.Shapes;
 using System.Windows.Controls;
 using PaintWPF.Drawers;
 using PaintWPF.Meta;
+using PaintWPF.Configuration;
+using System.Windows.Ink;
+using System.Windows.Media;
 
 namespace PaintWPF
 {
@@ -14,12 +17,18 @@ namespace PaintWPF
     {
         private MetaData metaData { get; set; }
         private Drawer drawer { get; set; }
+        private MainConfig config { get; set; }
+
+        private bool shapeSelected { get; set; }
+        private bool selection { get; set; }
 
         public MainWindow()
         {
             InitializeComponent();
 
-            var config = new MainConfig();
+            config = new MainConfig();
+
+            //var config = new MainConfig();
 
             //drawingBox.EditingMode = InkCanvasEditingMode.Ink;
 
@@ -40,7 +49,7 @@ namespace PaintWPF
 
             */
  
-           // drawingBox.Strokes.Add(drawer.drawWithFrame());
+            //drawingBox.Strokes.Add(drawer.drawWithFrame());
         }
 
         private void drawingBox_KeyDown(object sender, KeyEventArgs e)
@@ -74,34 +83,100 @@ namespace PaintWPF
 
         private void SelectButton_Click(object sender, RoutedEventArgs e)
         {
+            checkShape(sender);
             drawingBox.EditingMode = InkCanvasEditingMode.Select;
+            selection = true;
         }
 
         private void PenButton_Click(object sender, RoutedEventArgs e)
         {
-            drawingBox.EditingMode = InkCanvasEditingMode.Ink;
+            checkShape(sender);
+            drawingBox.EditingMode = InkCanvasEditingMode.Ink;    
         }
 
         private void ChooseShapeButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            checkShape(sender);
+            drawingBox.EditingMode = InkCanvasEditingMode.None;
+            //TODO вынести в отдельное окно
         }
 
         private void SetParamsButton_Click(object sender, RoutedEventArgs e)
         {
-
+            checkShape(sender);
         }
 
         private void EraseButton_Click(object sender, RoutedEventArgs e)
         {
+            checkShape(sender);
             drawingBox.EditingMode = InkCanvasEditingMode.EraseByPoint;
         }
 
-        private void drawingBox_MouseMove(object sender, MouseEventArgs e)
+        private void drawingBox_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
+            if (shapeSelected)
+            {
+                metaData = new MetaData();
+                drawer = new Drawer(new Rectangle(), metaData);
+                metaData.anchor = e.GetPosition(drawingBox);
+            }
         }
 
-        //private void drawFrame
+        private void drawingBox_PreviewMouseMove(object sender, MouseEventArgs e)
+        {
+            if (shapeSelected && (e.LeftButton == MouseButtonState.Pressed))
+            {
+                metaData.cursor = e.GetPosition(drawingBox);
+
+                if (!metaData.firstDrawn)
+                {
+                    drawingBox.Strokes.RemoveAt(metaData.index);   
+                }
+                else
+                {
+                    metaData.firstDrawn = false;
+                }
+                drawingBox.Strokes.Add(drawer.draw());
+                metaData.index = drawingBox.Strokes.Count - 1;
+            }
+        }
+
+        private void drawingBox_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (shapeSelected)
+            {
+                metaData = null;
+            }
+            else if (selection)
+            {
+                var strokes = drawingBox.GetSelectedStrokes();
+                foreach (var stroke in strokes)
+                { 
+                    stroke.DrawingAttributes.Color = Colors.Red;
+                }
+            }
+        }
+
+        private void checkShape(object sender)
+        {
+            if (sender != ChooseShapeButton)
+            {
+                shapeSelected = false;
+            }
+            else
+            {
+                shapeSelected = true;
+            }
+
+            if (sender != SelectButton)
+            {
+                selection = true;
+            }
+            else
+            {
+                selection = false;
+            }
+        }
+
     }
 }

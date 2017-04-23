@@ -56,9 +56,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Drawers\Drawer.cs" />
-    <Compile Include="Meta\MainConfig.cs" />
+    <Compile Include="Configuration\MainConfig.cs" />
     <Compile Include="Meta\MetaData.cs" />
-    <Compile Include="Meta\StyleConfig.cs" />
+    <Compile Include="Configuration\DrawerStyle.cs" />
     <Compile Include="Shapes\IsoscaleTriangle.cs" />
     <Compile Include="Shapes\Line.cs" />
     <Compile Include="Shapes\Pentagon.cs" />

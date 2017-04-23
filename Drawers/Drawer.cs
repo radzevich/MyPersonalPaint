@@ -3,6 +3,7 @@ using PaintWPF.Shapes;
 using System.Windows;
 using System.Windows.Ink;
 using PaintWPF.Meta;
+using PaintWPF.Configuration;
 using System.Media;
 
 namespace PaintWPF.Drawers
@@ -19,13 +20,18 @@ namespace PaintWPF.Drawers
             return stroke;
         }
 
-        public virtual StrokeCollection drawWithFrame()
+        public virtual StrokeCollection drawWithFrame(MainConfig config)
         {
             var strokeCollection = new StrokeCollection();
 
             var shapeStroke = new Stroke(shape.GetShapePointCollection(metaData.anchor, metaData.cursor));
             var frame = new Rectangle();
             var frameStroke = new Stroke(frame.GetShapePointCollection(metaData.anchor, metaData.cursor));
+
+            shapeStroke.DrawingAttributes.Color = config.StrokeColor;
+            shapeStroke.DrawingAttributes.Width = config.StrokeThickness;
+            shapeStroke.DrawingAttributes.Height = config.StrokeThickness;
+            shapeStroke.DrawingAttributes.IsHighlighter = config.StrokeHighliter;
 
             strokeCollection.Add(shapeStroke);
             strokeCollection.Add(frameStroke);
