@@ -8,6 +8,8 @@ using PaintWPF.Configuration;
 using System.Windows.Ink;
 using System.Windows.Media;
 
+
+
 namespace PaintWPF
 {
     /// <summary>
@@ -28,28 +30,10 @@ namespace PaintWPF
 
             config = new MainConfig();
 
-            //var config = new MainConfig();
+            config.configChanged += Config_ConfigChanged;
+            drawingBox.Strokes.StrokesChanged += Strokes_StrokesChanged;
 
-            //drawingBox.EditingMode = InkCanvasEditingMode.Ink;
-
-            //Call this code by event
-            /*metaData = new MetaData(new Point(0, 0), new Point(200, 200));
-            drawer = new Drawer(new Rectangle(), metaData);
-            drawingBox.Strokes.Add(drawer.draw());
-
-            metaData = new MetaData(new Point(0, 200), new Point(200, 200));
-            drawer = new Drawer(new Line(), metaData);
-            drawingBox.Strokes.Add(drawer.draw());
-
-            metaData = new MetaData(new Point(200, 0), new Point(200, 200));
-            drawer = new Drawer(new Line(), metaData);
-            drawingBox.Strokes.Add(drawer.draw());
-
-
-
-            */
- 
-            //drawingBox.Strokes.Add(drawer.drawWithFrame());
+            config.StrokeColor = Colors.Red;
         }
 
         private void drawingBox_KeyDown(object sender, KeyEventArgs e)
@@ -63,6 +47,7 @@ namespace PaintWPF
             if (metaData.firstDrawn)
             {
                 metaData.firstDrawn = false;
+                
                 drawingBox.Strokes.Add(drawer.draw());
             }
             else
@@ -143,19 +128,45 @@ namespace PaintWPF
 
         private void drawingBox_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
+            
             if (shapeSelected)
             {
                 metaData = null;
             }
             else if (selection)
             {
-                var strokes = drawingBox.GetSelectedStrokes();
-                foreach (var stroke in strokes)
-                { 
-                    stroke.DrawingAttributes.Color = Colors.Red;
+                try
+                {
+                    var strokes = drawingBox.GetSelectedStrokes();
+                    var drawerStyle = new DrawerStyle(strokes[0].DrawingAttributes.Color, 
+                                                      strokes[0].DrawingAttributes.Width, 
+                                                      strokes[0].DrawingAttributes.IsHighlighter
+                                                      );
+                    config.activeDrawerStyle = drawerStyle;
                 }
+                catch { }     
             }
         }
+
+        private void Strokes_StrokesChanged(object sender, StrokeCollectionChangedEventArgs e)
+        {
+            foreach (var stroke in e.Added)
+            {
+                stroke.DrawingAttributes.Color = config.activeDrawerStyle.Color;
+                stroke.DrawingAttributes.Width = config.activeDrawerStyle.Thickness;
+                stroke.DrawingAttributes.Height = config.activeDrawerStyle.Thickness;
+                stroke.DrawingAttributes.IsHighlighter = config.activeDrawerStyle.Highlighter;
+            }
+        }
+
+        private void Config_ConfigChanged(object sender, DrawerStyle e)
+        {
+            drawingBox.DefaultDrawingAttributes.Color = e.Color;
+            drawingBox.DefaultDrawingAttributes.Width = e.Thickness;
+            drawingBox.DefaultDrawingAttributes.Height = e.Thickness;
+            drawingBox.DefaultDrawingAttributes.IsHighlighter = e.Highlighter;
+        }
+
 
         private void checkShape(object sender)
         {

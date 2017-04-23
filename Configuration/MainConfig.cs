@@ -13,12 +13,17 @@ namespace PaintWPF.Configuration
 {
     class MainConfig
     {
+        //Declare the delegate (if any drawer config changed).
+        public delegate void configChangedEventHandler(object sender, DrawerStyle e);
+        //Declare the event.
+        public event configChangedEventHandler configChanged;
+
         //Contains primary settings (shape color, line thickness etc.).
         private readonly DrawerStyle primaryConfig;
-        //Contains configuration of focused item.
-        public DrawerStyle activeConfig { get; set; }
-        //Contanes frame configuration.
-        public DrawerStyle frameConfig { get; set; }
+        //Contains configuration of focused items.
+        public DrawerStyle activeDrawerStyle { get; set; }
+        //Containes frame configuration.
+        public DrawerStyle frameDraweStyle { get; set; }
 
         //Shape pattern (rectangle by default).
         private Frame setedFrame = new RectangleFrame();
@@ -26,44 +31,56 @@ namespace PaintWPF.Configuration
         //Shape configuration properties.
         public Color StrokeColor
         {
-            get { return activeConfig.Color; }
-            set { activeConfig.Color = value; }
+            get { return activeDrawerStyle.Color; }
+            set
+            {
+                activeDrawerStyle.Color = value;
+                configChanged?.Invoke(this, activeDrawerStyle);
+            }
         }
 
         public double StrokeThickness
         {
-            get { return activeConfig.Thickness; }
-            set { activeConfig.Thickness = value; }
+            get { return activeDrawerStyle.Thickness; }
+            set
+            {
+                activeDrawerStyle.Thickness = value;
+                configChanged?.Invoke(this, activeDrawerStyle);
+            }
         } 
 
         public bool StrokeHighliter
         {
-            get { return activeConfig.Highlighter; }
-            set { activeConfig.Highlighter = value; }
+            get { return activeDrawerStyle.Highlighter; }
+            set
+            {
+                activeDrawerStyle.Highlighter = value;
+                configChanged?.Invoke(this, activeDrawerStyle);
+            }
         }
 
         //Frame configuration properties.
         public Color FrameColor
         {
-            get { return frameConfig.Color; }
-            set { frameConfig.Color = value; }
+            get { return frameDraweStyle.Color; }
+            set { frameDraweStyle.Color = value; }
         }
 
         public double FrameThickness
         {
-            get { return frameConfig.Thickness; }
-            set { frameConfig.Thickness = value; }
+            get { return frameDraweStyle.Thickness; }
+            set { frameDraweStyle.Thickness = value; }
         }
 
         public bool FrameHighliter
         {
-            get { return frameConfig.Highlighter; }
-            set { frameConfig.Highlighter = value; }
+            get { return frameDraweStyle.Highlighter; }
+            set { frameDraweStyle.Highlighter = value; }
         }
 
         private void backupConfig()
         {
-            activeConfig = primaryConfig;
+            activeDrawerStyle = primaryConfig;
         }
 
         //Constructor.
@@ -71,7 +88,7 @@ namespace PaintWPF.Configuration
         {
             primaryConfig = new DrawerStyle();
             //frameConfig = new DrawingAttributes();
-            activeConfig = primaryConfig;
+            activeDrawerStyle = primaryConfig;
         }
     }
 }
