@@ -1,4 +1,3 @@
-E:\Универ\2 course\ООП\MyPersonalPaint1\PaintWPF\PaintWPF\PaintWPF\bin\Debug\PaintWPF.exe.config
 E:\Универ\2 course\ООП\MyPersonalPaint1\PaintWPF\PaintWPF\PaintWPF\bin\Debug\PaintWPF.exe
 E:\Универ\2 course\ООП\MyPersonalPaint1\PaintWPF\PaintWPF\PaintWPF\bin\Debug\PaintWPF.pdb
 E:\Универ\2 course\ООП\MyPersonalPaint1\PaintWPF\PaintWPF\PaintWPF\obj\Debug\PaintWPF.csprojResolveAssemblyReference.cache

@@ -106,7 +106,27 @@
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="img\pentagon.png" />
+    <Resource Include="img\star.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\circle.png" />
+    <Resource Include="img\cursor.png" />
+    <Resource Include="img\IsoscaleTriangle.png" />
+    <Resource Include="img\line.png" />
+    <Resource Include="img\square.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\select.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\pen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\eraser.png" />
+    <Resource Include="img\settings.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

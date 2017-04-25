@@ -15,11 +15,14 @@ namespace PaintWPF.Configuration
     {
         //Declare the delegate (if any drawer config changed).
         public delegate void configChangedEventHandler(object sender, DrawerStyle e);
+        public delegate void configBackupEventHandler(object sender, DrawerStyle e);
         //Declare the event.
         public event configChangedEventHandler configChanged;
+        public event configBackupEventHandler configBackup;
+
 
         //Contains primary settings (shape color, line thickness etc.).
-        private readonly DrawerStyle primaryConfig;
+        private DrawerStyle primaryConfig;
         //Contains configuration of focused items.
         public DrawerStyle activeDrawerStyle { get; set; }
         //Containes frame configuration.
@@ -81,6 +84,7 @@ namespace PaintWPF.Configuration
         public void backupConfig()
         {
             activeDrawerStyle = primaryConfig;
+            configBackup?.Invoke(this, activeDrawerStyle);
         }
 
         //Constructor.

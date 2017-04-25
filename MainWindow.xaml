@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PaintWPF"
         mc:Ignorable="d"
-        Title="My Personal Paint" Height="800" Width="1500">
+        Title="My Personal Paint" Height="752.333" Width="1506.667">
     <Grid x:Name="LayoutRoot" Background="White" ShowGridLines="False" >
         <Grid.ColumnDefinitions>
             <!--Tools panel-->
             <ColumnDefinition Width="60"/>
             <!--Drawing field (canvas)-->
             <ColumnDefinition />
-            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="40"/>
         </Grid.ColumnDefinitions>
 
         <!--Tools panel definition-->
@@ -29,10 +29,10 @@
                     <RowDefinition Height="60" />
                 </Grid.RowDefinitions>
 
-                <Button x:Name="SelectButton" Grid.Row="0" Grid.Column="0" Click="SelectButton_Click">
+                <Button x:Name="SelectButton" Grid.Row="0" Grid.Column="0" Click="SelectButton_Click" Background="White">
                     <Image Source="img/select.png" Height="46"></Image>
                 </Button>
-                <Button x:Name="PenButton" Grid.Row="1" Grid.Column="0" Click="PenButton_Click">
+                <Button x:Name="PenButton" Grid.Row="1" Grid.Column="0" Click="PenButton_Click" Background="White">
                     <Image Source="img/pen.png" Height="46"></Image>
                 </Button>
                 <Grid x:Name="ShapesField" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" Width="60" PreviewMouseLeftButtonDown="ShapesField_PreviewMouseLeftButtonDown">
@@ -60,8 +60,12 @@
                         <Image Source="img/star.png"></Image>
                     </Button>
                 </Grid>
-                <Button x:Name="EraseButton" Grid.Row="3" Grid.Column="0" Click="EraseButton_Click"></Button>
-                <Button x:Name="SetParamsButton" Grid.Row="4" Grid.Column="0" Click="SetParamsButton_Click"></Button>
+                <Button x:Name="EraseButton" Grid.Row="3" Grid.Column="0" Click="EraseButton_Click" Background="White">
+                    <Image Source="img/eraser.png"></Image>
+                </Button>
+                <Button x:Name="SetParamsButton" Grid.Row="4" Grid.Column="0" Click="SetParamsButton_Click" Background="White">
+                    <Image Source="img/settings.png" Width="60" Height="46"></Image>
+                </Button>
             </Grid>
         </Grid>
 
@@ -70,6 +74,7 @@
                    MouseLeftButtonDown="drawingBox_MouseLeftButtonDown"
                    MouseMove="drawingBox_MouseMove"
                    MouseLeftButtonUp="drawingBox_MouseLeftButtonUp"
+                   PreviewMouseLeftButtonDown="drawingBox_PreviewMouseLeftButtonDown"
                    />
 
         <!--Tools panel definition-->
@@ -77,6 +82,47 @@
             <Grid.Background>
                 <SolidColorBrush Color="DimGray" />
             </Grid.Background>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="30"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions >
+                <RowDefinition Height="720" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Canvas x:Name="SetedColorField" Grid.Column="0" Grid.Row="0" Background="Black"></Canvas>
+            
+            <Grid x:Name="ColorsField" Grid.Column="1" Grid.Row="0" Background="White" Margin="0,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="60" />
+                </Grid.RowDefinitions>
+
+                <Button x:Name="SetBlackColor" Grid.Row="0" Grid.Column="0" Background="Black" Click="SetBlackColor_Click" Margin="0,0,-2,0"/>
+                <Button x:Name="SetGrayColor" Grid.Row="1" Grid.Column="0" Background="Gray" Click="SetBlackColor_Click" Margin="0,0,-2,0"/>
+                <Button x:Name="SetBrownColor" Grid.Row="2" Grid.Column="0" Background="Brown" Click="SetBlackColor_Click" Margin="0,0,-2,0"/>
+                <Button x:Name="SetRedColor" Grid.Row="3" Grid.Column="0" Background="Red" Click="SetBlackColor_Click" HorizontalAlignment="Left" Width="33" Margin="0,0,-2,0"/>
+                <Button x:Name="SetOrangeColor" Grid.Row="4" Grid.Column="0" Background="Orange" Click="SetBlackColor_Click" Margin="0,0,-2,0"/>
+                <Button x:Name="SetYellowColor" Grid.Row="5" Grid.Column="0" Background="Yellow" Click="SetBlackColor_Click" Margin="0,0,-2,0"/>
+                <Button x:Name="SetLightGreenColor" Grid.Row="6" Grid.Column="0" Background="GreenYellow" Click="SetBlackColor_Click" HorizontalAlignment="Left" Width="33" Margin="0,0,-2,0"/>
+                <Button x:Name="SetDarkGreenColor" Grid.Row="7" Grid.Column="0" Background="Green" Click="SetBlackColor_Click" Margin="0,0,-2,0"/>
+                <Button x:Name="SetDarkBlueColor" Grid.Row="8" Grid.Column="0" Background="BlueViolet" Click="SetBlackColor_Click" Margin="0,0,-2,0"/>
+                <Button x:Name="SetLightBlueColor" Grid.Row="9" Grid.Column="0" Background="Blue" Click="SetBlackColor_Click" Margin="0,0,-2,0"/>
+                <Button x:Name="SetPurpleColor" Grid.Row="10" Grid.Column="0" Background="Purple" Click="SetBlackColor_Click" Margin="0,0,-2,0"/>
+                <Button x:Name="SetPinkColor" Grid.Row="11" Grid.Column="0" Background="Pink" Click="SetBlackColor_Click"/>
+                <Button x:Name="SetWhiteColor" Grid.Row="11" Grid.Column="0" Background="White" Click="SetBlackColor_Click" Margin="0,0,-2,0"/>
+            </Grid>
         </Grid>
 
     </Grid>

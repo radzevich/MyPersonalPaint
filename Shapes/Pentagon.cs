@@ -8,7 +8,7 @@ namespace PaintWPF.Shapes
     class Pentagon : Shape
     {
         public override StylusPointCollection GetShapePointCollection(Point anchor, Point cursor)
-        {/*
+        {
             var pointCollection = new StylusPointCollection();
             int angleNum = 5;                                                                                    //The number of angles in the shape.
             double radius = Math.Min(Math.Abs(anchor.X - cursor.X), Math.Abs(anchor.Y - cursor.Y)) / 2;          //Getting radii of inscribed and circumscribed circles.
@@ -35,9 +35,10 @@ namespace PaintWPF.Shapes
 
             //Drawing strokes between points.
             var pentagone = new Stroke(pointCollection);
-            return pentagone;
-            */
-
+            return pointCollection;
+        }
+            
+/*
             var pointCollection = new StylusPointCollection();
             double x = Math.Abs(anchor.X - cursor.X) / 2;                                                                //Center coords
             double y = Math.Abs(anchor.Y - cursor.Y) / 2;
@@ -63,7 +64,7 @@ namespace PaintWPF.Shapes
             return pointCollection;
             
         }
-
+        */
         public Pentagon() : base() { }
     }
 }

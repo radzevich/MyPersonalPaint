@@ -9,7 +9,6 @@ using System.Windows.Ink;
 using System.Windows.Media;
 
 
-
 namespace PaintWPF
 {
     /// <summary>
@@ -22,7 +21,6 @@ namespace PaintWPF
         private MainConfig config { get; set; }
 
         private bool shapeSeted { get; set; }
-        private bool selectionSeted { get; set; }
 
         public MainWindow()
         {
@@ -31,40 +29,14 @@ namespace PaintWPF
             config = new MainConfig();
 
             config.configChanged += Config_ConfigChanged;
+            config.configBackup += Config_Backup;
             drawingBox.Strokes.StrokesChanged += Strokes_StrokesChanged;
-
-            //config.StrokeColor = Colors.Red;
         }
-/*
-        private void drawingBox_KeyDown(object sender, KeyEventArgs e)
-        {
-            //public static bool index;
 
-            //var drawer = new Drawer(new Line(), metaData);
-            //drawingBox.Strokes.Add(drawer.draw());
-            //drawingBox.Strokes.RemoveAt(0);
-            
-            if (metaData.firstDrawn)
-            {
-                metaData.firstDrawn = false;
-                
-                drawingBox.Strokes.Add(drawer.draw());
-            }
-            else
-            {
-                drawingBox.Strokes.RemoveAt(metaData.index);
-                drawingBox.Strokes.Add(drawer.draw());
-            }
-            metaData.index = drawingBox.Strokes.Count - 1;
-            metaData.anchor = new Point(metaData.anchor.X + 1, metaData.anchor.Y + 1);
-            metaData.cursor = new Point(metaData.cursor.X + 1, metaData.cursor.Y + 1);
-        }
-        */
 
         private void SelectButton_Click(object sender, RoutedEventArgs e)
         {
             drawingBox.EditingMode = InkCanvasEditingMode.Select;
-            selectionSeted = true;
         }
 
         private void PenButton_Click(object sender, RoutedEventArgs e)
@@ -74,7 +46,7 @@ namespace PaintWPF
 
         private void SetParamsButton_Click(object sender, RoutedEventArgs e)
         {
-
+            drawingBox.EditingMode = InkCanvasEditingMode.None;
         }
 
         private void EraseButton_Click(object sender, RoutedEventArgs e)
@@ -88,33 +60,36 @@ namespace PaintWPF
         {
             if (shapeSeted)
             {
-                drawer = new Drawer(metaData);
-                metaData.anchor = e.GetPosition(drawingBox);
-                metaData.firstDrawn = true;
+                try
+                {
+                    drawer = new Drawer(metaData);
+                    metaData.anchor = e.GetPosition(drawingBox);
+                    metaData.firstDrawn = true;
+                }
+                catch { }
             }
-           /* else if (selectionSeted)
-            {
-                drawingBox.EditingMode = InkCanvasEditingMode.None;
-                drawingBox.EditingMode = InkCanvasEditingMode.Select;
-            }*/
         }
 
         private void drawingBox_MouseMove(object sender, MouseEventArgs e)
         {
             if (shapeSeted && (e.LeftButton == MouseButtonState.Pressed))
             {
-                metaData.cursor = e.GetPosition(drawingBox);
+                try
+                {
+                    metaData.cursor = e.GetPosition(drawingBox);
 
-                if (!metaData.firstDrawn)
-                {
-                    drawingBox.Strokes.RemoveAt(metaData.index);   
+                    if (!metaData.firstDrawn)
+                    {
+                        drawingBox.Strokes.RemoveAt(metaData.index);
+                    }
+                    else
+                    {
+                        metaData.firstDrawn = false;
+                    }
+                    drawingBox.Strokes.Add(drawer.draw());
+                    metaData.index = drawingBox.Strokes.Count - 1;
                 }
-                else
-                {
-                    metaData.firstDrawn = false;
-                }
-                drawingBox.Strokes.Add(drawer.draw());
-                metaData.index = drawingBox.Strokes.Count - 1;
+                catch { }
             }
         }
 
@@ -122,7 +97,7 @@ namespace PaintWPF
         {
             drawer = null;
       
-            if (selectionSeted)
+            if (drawingBox.EditingMode == InkCanvasEditingMode.Select)
             {
                 var strokes = drawingBox.GetSelectedStrokes();
                 if (strokes.Count != 0)
@@ -137,6 +112,7 @@ namespace PaintWPF
         }
 
 //****************************************************************************************************
+//************************************Drawer style configuration**************************************
 
         private void Strokes_StrokesChanged(object sender, StrokeCollectionChangedEventArgs e)
         {
@@ -155,9 +131,29 @@ namespace PaintWPF
             drawingBox.DefaultDrawingAttributes.Width = e.Thickness;
             drawingBox.DefaultDrawingAttributes.Height = e.Thickness;
             drawingBox.DefaultDrawingAttributes.IsHighlighter = e.Highlighter;
+
+            foreach (Stroke stroke in drawingBox.GetSelectedStrokes())
+            {
+                stroke.DrawingAttributes.Color = e.Color;
+                stroke.DrawingAttributes.Width = e.Thickness;
+                stroke.DrawingAttributes.Height = e.Thickness;
+                stroke.DrawingAttributes.IsHighlighter = e.Highlighter;
+            }
+            SetedColorField.Background = new SolidColorBrush(e.Color);
         }
 
+        private void Config_Backup(object sender, DrawerStyle e)
+        {
+            drawingBox.DefaultDrawingAttributes.Color = e.Color;
+            drawingBox.DefaultDrawingAttributes.Width = e.Thickness;
+            drawingBox.DefaultDrawingAttributes.Height = e.Thickness;
+            drawingBox.DefaultDrawingAttributes.IsHighlighter = e.Highlighter;
+            SetedColorField.Background = new SolidColorBrush(e.Color);
+        }
 
+//*******************************************************************************************************
+
+//***************************OnButtonClickEvents*********************************************************
         private void LineSelectButton_Click(object sender, RoutedEventArgs e)
         {
             metaData = new MetaData(new Line());
@@ -165,7 +161,7 @@ namespace PaintWPF
 
         private void TriangleSelectButton_Click(object sender, RoutedEventArgs e)
         {
-            metaData = new MetaData(new RightTriangle());
+            metaData = new MetaData(new IsoscaleTriangle());
         }
 
         private void RectanglectButton_Click(object sender, RoutedEventArgs e)
@@ -188,13 +184,26 @@ namespace PaintWPF
             if ((shapeSeted) && (!ShapesField.IsStylusOver))
             {
                 shapeSeted = false;
-            }     
+            }
         }
 
         private void ShapesField_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             shapeSeted = true;
             drawingBox.EditingMode = InkCanvasEditingMode.None;
+        }
+
+        private void SetBlackColor_Click(object sender, RoutedEventArgs e)
+        {
+            config.StrokeColor = ((sender as Button).Background as SolidColorBrush).Color;
+        }
+
+        private void drawingBox_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (drawingBox.EditingMode == InkCanvasEditingMode.Select)
+            {
+                config.backupConfig();
+            }
         }
     }
 }
