@@ -78,7 +78,7 @@ namespace PaintWPF.Configuration
             set { frameDraweStyle.Highlighter = value; }
         }
 
-        private void backupConfig()
+        public void backupConfig()
         {
             activeDrawerStyle = primaryConfig;
         }

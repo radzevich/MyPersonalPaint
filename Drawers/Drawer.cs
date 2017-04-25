@@ -10,13 +10,12 @@ namespace PaintWPF.Drawers
 {
     class Drawer
     {
-        private readonly Shape shape;
         private readonly MetaData metaData;
         //public Stroke stroke { get; private set; }
 
         public virtual Stroke draw()
         {
-            var stroke = new Stroke(shape.GetShapePointCollection(metaData.anchor, metaData.cursor));
+            var stroke = new Stroke(metaData.shape.GetShapePointCollection(metaData.anchor, metaData.cursor));
             return stroke;
         }
 
@@ -24,7 +23,7 @@ namespace PaintWPF.Drawers
         {
             var strokeCollection = new StrokeCollection();
 
-            var shapeStroke = new Stroke(shape.GetShapePointCollection(metaData.anchor, metaData.cursor));
+            var shapeStroke = new Stroke(metaData.shape.GetShapePointCollection(metaData.anchor, metaData.cursor));
             var frame = new Rectangle();
             var frameStroke = new Stroke(frame.GetShapePointCollection(metaData.anchor, metaData.cursor));
 
@@ -52,13 +51,12 @@ namespace PaintWPF.Drawers
             var frame = new StrokeFrame(GetShapePointCollection(metaData.anchor, metaData.cursor));
         }
         */
-        public Drawer(Shape shape, MetaData metaData)
+        public Drawer(MetaData metaData)
         {
-            if ((shape == null) || (metaData == null))
+            if (metaData == null)
             {
                 throw new ArgumentNullException();
             }
-            this.shape = shape;
             this.metaData = metaData;
         }
     }

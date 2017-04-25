@@ -12,7 +12,7 @@
             <ColumnDefinition Width="60"/>
             <!--Drawing field (canvas)-->
             <ColumnDefinition />
-            <ColumnDefinition Width="15"/>
+            <ColumnDefinition Width="30"/>
         </Grid.ColumnDefinitions>
 
         <!--Tools panel definition-->
@@ -20,31 +20,56 @@
             <Grid.Background>
                 <SolidColorBrush Color="DimGray" />
             </Grid.Background>
-            <Grid x:Name="Tools">
+            <Grid x:Name="Tools" PreviewMouseLeftButtonDown="Tools_PreviewMouseLeftButtonDown">
                 <Grid.RowDefinitions >
-                    <RowDefinition Height="60">
-                    </RowDefinition>
                     <RowDefinition Height="60" />
                     <RowDefinition Height="60" />
+                    <RowDefinition Height="300" />
                     <RowDefinition Height="60" />
                     <RowDefinition Height="60" />
                 </Grid.RowDefinitions>
 
-                <Button x:Name="SelectButton" Grid.Row="0" Grid.Column="0" Click="SelectButton_Click"></Button>
-                <Button x:Name="PenButton" Grid.Row="1" Grid.Column="0" Click="PenButton_Click"></Button>
-                <Button x:Name="ChooseShapeButton" Grid.Row="2" Grid.Column="0" Click="ChooseShapeButton_Click"></Button>
-                <Button x:Name="SetParamsButton" Grid.Row="3" Grid.Column="0" Click="SetParamsButton_Click"></Button>
-                <Button x:Name="EraseButton" Grid.Row="4" Grid.Column="0" Click="EraseButton_Click"></Button>
-                
-                                   
+                <Button x:Name="SelectButton" Grid.Row="0" Grid.Column="0" Click="SelectButton_Click">
+                    <Image Source="img/select.png" Height="46"></Image>
+                </Button>
+                <Button x:Name="PenButton" Grid.Row="1" Grid.Column="0" Click="PenButton_Click">
+                    <Image Source="img/pen.png" Height="46"></Image>
+                </Button>
+                <Grid x:Name="ShapesField" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" Width="60" PreviewMouseLeftButtonDown="ShapesField_PreviewMouseLeftButtonDown">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60" />
+                        <RowDefinition Height="60" />
+                        <RowDefinition Height="60" />
+                        <RowDefinition Height="60" />
+                        <RowDefinition Height="60" />
+                    </Grid.RowDefinitions>
+
+                    <Button x:Name="LineSelectButton" Grid.Row="0" Grid.Column="0" Click="LineSelectButton_Click" Background="White">
+                        <Image Source="img/line.png"></Image>
+                    </Button>
+                    <Button x:Name="TriangleSelectButton" Grid.Row="1" Grid.Column="0" Click="TriangleSelectButton_Click" Background="White">
+                        <Image Source="img/IsoscaleTriangle.png"></Image>
+                    </Button>
+                    <Button x:Name="RectanglectButton" Grid.Row="2" Grid.Column="0" Click="RectanglectButton_Click" Background="White">
+                        <Image Source="img/square.png" Height="46"></Image>
+                    </Button>
+                    <Button x:Name="PentagonctButton" Grid.Row="3" Grid.Column="0" Click="PentagonctButton_Click" Background="White">
+                        <Image Source="img/pentagon.png" Height="52"></Image>
+                    </Button>
+                    <Button x:Name="StarSelectButton" Grid.Row="4" Grid.Column="0" Click="StarSelectButton_Click" Background="White">
+                        <Image Source="img/star.png"></Image>
+                    </Button>
+                </Grid>
+                <Button x:Name="EraseButton" Grid.Row="3" Grid.Column="0" Click="EraseButton_Click"></Button>
+                <Button x:Name="SetParamsButton" Grid.Row="4" Grid.Column="0" Click="SetParamsButton_Click"></Button>
             </Grid>
         </Grid>
 
         <!--Drawing field-->
         <InkCanvas x:Name="drawingBox" Grid.Row="0" Grid.Column="1" 
-                   PreviewMouseLeftButtonDown="drawingBox_PreviewMouseLeftButtonDown"
-                   PreviewMouseMove="drawingBox_PreviewMouseMove"
-                   PreviewMouseLeftButtonUp="drawingBox_PreviewMouseLeftButtonUp"
+                   MouseLeftButtonDown="drawingBox_MouseLeftButtonDown"
+                   MouseMove="drawingBox_MouseMove"
+                   MouseLeftButtonUp="drawingBox_MouseLeftButtonUp"
                    />
 
         <!--Tools panel definition-->

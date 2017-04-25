@@ -21,8 +21,8 @@ namespace PaintWPF
         private Drawer drawer { get; set; }
         private MainConfig config { get; set; }
 
-        private bool shapeSelected { get; set; }
-        private bool selection { get; set; }
+        private bool shapeSeted { get; set; }
+        private bool selectionSeted { get; set; }
 
         public MainWindow()
         {
@@ -33,9 +33,9 @@ namespace PaintWPF
             config.configChanged += Config_ConfigChanged;
             drawingBox.Strokes.StrokesChanged += Strokes_StrokesChanged;
 
-            config.StrokeColor = Colors.Red;
+            //config.StrokeColor = Colors.Red;
         }
-
+/*
         private void drawingBox_KeyDown(object sender, KeyEventArgs e)
         {
             //public static bool index;
@@ -59,57 +59,49 @@ namespace PaintWPF
             metaData.anchor = new Point(metaData.anchor.X + 1, metaData.anchor.Y + 1);
             metaData.cursor = new Point(metaData.cursor.X + 1, metaData.cursor.Y + 1);
         }
-
-        public void Initiaalize()
-        {
-            InitializeComponent();
-
-        }
+        */
 
         private void SelectButton_Click(object sender, RoutedEventArgs e)
         {
-            checkShape(sender);
             drawingBox.EditingMode = InkCanvasEditingMode.Select;
-            selection = true;
+            selectionSeted = true;
         }
 
         private void PenButton_Click(object sender, RoutedEventArgs e)
         {
-            checkShape(sender);
             drawingBox.EditingMode = InkCanvasEditingMode.Ink;    
-        }
-
-        private void ChooseShapeButton_Click(object sender, RoutedEventArgs e)
-        {
-            checkShape(sender);
-            drawingBox.EditingMode = InkCanvasEditingMode.None;
-            //TODO вынести в отдельное окно
         }
 
         private void SetParamsButton_Click(object sender, RoutedEventArgs e)
         {
-            checkShape(sender);
+
         }
 
         private void EraseButton_Click(object sender, RoutedEventArgs e)
         {
-            checkShape(sender);
             drawingBox.EditingMode = InkCanvasEditingMode.EraseByPoint;
         }
 
-        private void drawingBox_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+//*****************************************Drawing cycle****************************************
+  
+        private void drawingBox_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (shapeSelected)
+            if (shapeSeted)
             {
-                metaData = new MetaData();
-                drawer = new Drawer(new Rectangle(), metaData);
+                drawer = new Drawer(metaData);
                 metaData.anchor = e.GetPosition(drawingBox);
+                metaData.firstDrawn = true;
             }
+           /* else if (selectionSeted)
+            {
+                drawingBox.EditingMode = InkCanvasEditingMode.None;
+                drawingBox.EditingMode = InkCanvasEditingMode.Select;
+            }*/
         }
 
-        private void drawingBox_PreviewMouseMove(object sender, MouseEventArgs e)
+        private void drawingBox_MouseMove(object sender, MouseEventArgs e)
         {
-            if (shapeSelected && (e.LeftButton == MouseButtonState.Pressed))
+            if (shapeSeted && (e.LeftButton == MouseButtonState.Pressed))
             {
                 metaData.cursor = e.GetPosition(drawingBox);
 
@@ -126,27 +118,25 @@ namespace PaintWPF
             }
         }
 
-        private void drawingBox_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        private void drawingBox_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            
-            if (shapeSelected)
+            drawer = null;
+      
+            if (selectionSeted)
             {
-                metaData = null;
-            }
-            else if (selection)
-            {
-                try
+                var strokes = drawingBox.GetSelectedStrokes();
+                if (strokes.Count != 0)
                 {
-                    var strokes = drawingBox.GetSelectedStrokes();
-                    var drawerStyle = new DrawerStyle(strokes[0].DrawingAttributes.Color, 
-                                                      strokes[0].DrawingAttributes.Width, 
+                    var drawerStyle = new DrawerStyle(strokes[0].DrawingAttributes.Color,
+                                                      strokes[0].DrawingAttributes.Width,
                                                       strokes[0].DrawingAttributes.IsHighlighter
                                                       );
                     config.activeDrawerStyle = drawerStyle;
                 }
-                catch { }     
             }
         }
+
+//****************************************************************************************************
 
         private void Strokes_StrokesChanged(object sender, StrokeCollectionChangedEventArgs e)
         {
@@ -168,26 +158,43 @@ namespace PaintWPF
         }
 
 
-        private void checkShape(object sender)
+        private void LineSelectButton_Click(object sender, RoutedEventArgs e)
         {
-            if (sender != ChooseShapeButton)
-            {
-                shapeSelected = false;
-            }
-            else
-            {
-                shapeSelected = true;
-            }
-
-            if (sender != SelectButton)
-            {
-                selection = true;
-            }
-            else
-            {
-                selection = false;
-            }
+            metaData = new MetaData(new Line());
         }
 
+        private void TriangleSelectButton_Click(object sender, RoutedEventArgs e)
+        {
+            metaData = new MetaData(new RightTriangle());
+        }
+
+        private void RectanglectButton_Click(object sender, RoutedEventArgs e)
+        {
+            metaData = new MetaData(new Rectangle());
+        }
+
+        private void PentagonctButton_Click(object sender, RoutedEventArgs e)
+        {
+            metaData = new MetaData(new Pentagon());
+        }
+
+        private void StarSelectButton_Click(object sender, RoutedEventArgs e)
+        {
+            metaData = new MetaData(new Star());
+        }
+
+        private void Tools_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if ((shapeSeted) && (!ShapesField.IsStylusOver))
+            {
+                shapeSeted = false;
+            }     
+        }
+
+        private void ShapesField_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            shapeSeted = true;
+            drawingBox.EditingMode = InkCanvasEditingMode.None;
+        }
     }
 }
