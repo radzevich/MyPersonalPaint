@@ -19,7 +19,7 @@ namespace PaintWPF.Drawers
             return stroke;
         }
 
-        public virtual StrokeCollection drawWithFrame(MainConfig config)
+        public virtual StrokeCollection drawWithFrame()
         {
             var strokeCollection = new StrokeCollection();
 
@@ -27,22 +27,9 @@ namespace PaintWPF.Drawers
             var frame = new Rectangle();
             var frameStroke = new Stroke(frame.GetShapePointCollection(metaData.anchor, metaData.cursor));
 
-            shapeStroke.DrawingAttributes.Color = config.StrokeColor;
-            shapeStroke.DrawingAttributes.Width = config.StrokeThickness;
-            shapeStroke.DrawingAttributes.Height = config.StrokeThickness;
-            shapeStroke.DrawingAttributes.IsHighlighter = config.StrokeHighliter;
-
             strokeCollection.Add(shapeStroke);
             strokeCollection.Add(frameStroke);
-
-           /* var conf = new FrameConfig();
-
-            frameStroke.DrawingAttributes.Color = conf.DefaultPenColor;
-            frameStroke.DrawingAttributes.Width = conf.DefaultThickness;
-            frameStroke.DrawingAttributes.Height = conf.DefaultThickness;
-            frameStroke.DrawingAttributes.IsHighlighter = true;
             
-*/
             return strokeCollection;
         }
 

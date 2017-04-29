@@ -66,7 +66,10 @@ namespace PaintWPF
                     metaData.anchor = e.GetPosition(drawingBox);
                     metaData.firstDrawn = true;
                 }
-                catch { }
+                catch
+                {
+                    MessageBox.Show("Null pointer exception");
+                }
             }
         }
 
@@ -89,7 +92,10 @@ namespace PaintWPF
                     drawingBox.Strokes.Add(drawer.draw());
                     metaData.index = drawingBox.Strokes.Count - 1;
                 }
-                catch { }
+                catch
+                {
+                    MessageBox.Show("Null pointer exception");
+                }
             }
         }
 
@@ -116,12 +122,15 @@ namespace PaintWPF
 
         private void Strokes_StrokesChanged(object sender, StrokeCollectionChangedEventArgs e)
         {
-            foreach (var stroke in e.Added)
+            if (drawingBox.EditingMode != InkCanvasEditingMode.EraseByPoint)
             {
-                stroke.DrawingAttributes.Color = config.activeDrawerStyle.Color;
-                stroke.DrawingAttributes.Width = config.activeDrawerStyle.Thickness;
-                stroke.DrawingAttributes.Height = config.activeDrawerStyle.Thickness;
-                stroke.DrawingAttributes.IsHighlighter = config.activeDrawerStyle.Highlighter;
+                foreach (var stroke in e.Added)
+                {
+                    stroke.DrawingAttributes.Color = config.activeDrawerStyle.Color;
+                    stroke.DrawingAttributes.Width = config.activeDrawerStyle.Thickness;
+                    stroke.DrawingAttributes.Height = config.activeDrawerStyle.Thickness;
+                    stroke.DrawingAttributes.IsHighlighter = config.activeDrawerStyle.Highlighter;
+                }
             }
         }
 
